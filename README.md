@@ -204,3 +204,12 @@ AuthenticationMethods publickey,password publickey,keyboard-interactive
 
 
 `sudo service sshd restart` restart the deamon
+
+
+Att göra : Skriva in hur man gör statiskt ip adress.
+
+# Tomcat
+#Geoserver säkeherhet
+#postgresql
+
+Migrerar geoserver ?
