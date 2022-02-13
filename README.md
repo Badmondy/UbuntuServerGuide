@@ -170,3 +170,37 @@ Om du vill banna dem för alltid kan man sätta bantime = -1 ( Tänk dock på at
 
 
 `sudo service fail2ban restart` starta om fail2ban
+
+`sudo fail2ban-client status` - ser våra "fängelser" för folk som försöker göra intrång.
+
+`sudo fail2ban-client status sshd` - visar loggen.
+
+`sudo fail2ban-client set sshd unbanip ipadress` om du vill ta bort någon från din lista som blivit bannad.
+
+
+## Authenticator
+
+sudo apt install libpam-google-authenticator
+google-authenticator
+y
+y
+y
+n
+y
+
+ sudo nano /etc/pam.d/sshd
+comment out Include common-auth
+
+längst ner lägg in :
+
+auth required pam_google_authenticator.so
+
+sudo nano /etc/ssh/sshd_config
+
+
+CTRL + w sök efter ChallengeResponseAuthentication och change to yes.
+CTRL + W sök efter Use pam och lägg till under det.
+AuthenticationMethods publickey,password publickey,keyboard-interactive
+
+
+`sudo service sshd restart` restart the deamon
